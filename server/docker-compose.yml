@@ -1,0 +1,15 @@
+services:
+  scale:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PM2_WORKERS=3
+# Keep the workers and cores same count
+    deploy:
+      resources:
+        limits:
+          cpus: '3'
+          memory: "512m"
